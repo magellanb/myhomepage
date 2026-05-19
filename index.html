@@ -29,7 +29,7 @@
             .overlay {
                 position: fixed;
                 inset: 0;
-                background: rgba(0, 0, 0, 0.55);
+                background: rgba(0, 0, 0, 0.38);
                 z-index: 1;
             }
 
@@ -44,12 +44,12 @@
             }
 
             .card {
-                background: rgba(15, 15, 15, 0.65);
-                backdrop-filter: blur(10px);
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                border-radius: 10px;
-                padding: 35px;
-                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+                background: rgba(20, 20, 20, 0.42);
+                backdrop-filter: blur(5px);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                border-radius: 8px;
+                padding: 30px;
+                box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
             }
 
             .card-title {
@@ -78,7 +78,8 @@
 
             .search-name {
                 font-size: 18px;
-                font-weight: bold;
+                font-weight: 600;
+                letter-spacing: 0.2px;
             }
 
             .google-options {
@@ -102,12 +103,12 @@
 
             .search-input {
                 flex: 1;
-                padding: 15px;
+                padding: 12px 14px;
                 border: none;
                 border-radius: 6px;
-                background: rgba(255, 255, 255, 0.92);
+                background: rgba(255, 255, 255, 0.82);
                 color: black;
-                font-size: 16px;
+                font-size: 15px;
                 outline: none;
             }
 
@@ -115,15 +116,15 @@
                 box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.55), 0 0 18px rgba(59, 130, 246, 0.35);
             }
 
-
             .btn {
-                padding: 15px 18px;
+                padding: 12px 18px;
                 border: none;
                 border-radius: 6px;
                 cursor: pointer;
                 color: white;
                 font-size: 14px;
-                font-weight: bold;
+                font-weight: 600;
+                letter-spacing: 0.2px;
                 transition: background 0.2s, transform 0.15s;
             }
 
@@ -132,19 +133,23 @@
             }
 
             .btn-search {
-                background: #2563EB;
+                background: rgba(82, 126, 212, 0.90);
+                border: 1px solid rgba(180, 215, 255, 0.14);
+                box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
             }
 
             .btn-search:hover {
-                background: #1D4ED8;
+                background: rgba(98, 142, 228, 0.96);
             }
 
             .btn-clear {
-                background: #DC2626;
+                background: rgba(192, 82, 96, 0.90);
+                border: 1px solid rgba(255, 195, 205, 0.13);
+                box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
             }
 
             .btn-clear:hover {
-                background: #B91C1C;
+                background: rgba(208, 96, 110, 0.96);
             }
 
             .shortcuts-grid {
@@ -156,19 +161,21 @@
             .shortcut {
                 display: flex;
                 align-items: center;
-                gap: 14px;
-                min-height: 70px;
-                padding: 16px;
-                border-radius: 14px;
+                gap: 12px;
+                min-height: 48px;
+                padding: 12px 14px;
+                border-radius: 8px;
                 text-decoration: none;
                 color: white;
-                background: rgba(255, 255, 255, 0.07);
-                transition: background 0.2s, transform 0.15s;
+                background: rgba(255, 255, 255, 0.075);
+                border: 1px solid rgba(255, 255, 255, 0.04);
+                transition: background 0.2s, border-color 0.2s, transform 0.15s;
             }
 
             .shortcut:hover {
-                background: rgba(255, 255, 255, 0.12);
-                transform: translateY(-2px);
+                background: rgba(255, 255, 255, 0.11);
+                border-color: rgba(255, 255, 255, 0.08);
+                transform: translateY(-1px);
             }
 
             .shortcut img {
@@ -179,6 +186,8 @@
 
             .shortcut span {
                 font-size: 15px;
+                font-weight: 500;
+                letter-spacing: 0.1px;
             }
 
             .logo-container {
@@ -216,8 +225,7 @@
                 }
 
                 .search-header {
-                    flex-direction: column;
-                    align-items: flex-start;
+                    align-items: center;
                     gap: 10px;
                 }
 
@@ -257,6 +265,30 @@
 
             <div class="card">
 
+                <!-- DUCK -->
+
+                <div class="search-block">
+                    <div class="search-header">
+                        <div class="search-name">DuckDuckGo</div>
+                        <div class="google-options">
+                            <label>
+                                <input type="checkbox" id="duckImages">
+                                IMAGES
+                            </label>
+                        </div>
+                    </div>
+                    <div class="search-row">
+                        <input class="search-input" type="text" id="duckSearch" placeholder="Search with DuckDuckGo..."
+                            onkeydown="handleKey(event, 'duck')">
+                        <button class="btn btn-search" onclick="searchDuck()">
+                            Search
+                        </button>
+                        <button class="btn btn-clear" onclick="clearInput('duckSearch')">
+                            Clear
+                        </button>
+                    </div>
+                </div>
+
                 <!-- GOOGLE -->
 
                 <div class="search-block">
@@ -289,29 +321,6 @@
                     </div>
                 </div>
 
-                <!-- DUCK -->
-
-                <div class="search-block">
-                    <div class="search-header">
-                        <div class="search-name">DuckDuckGo</div>
-                        <div class="google-options">
-                            <label>
-                                <input type="checkbox" id="duckImages">
-                                IMAGES
-                            </label>
-                        </div>
-                    </div>
-                    <div class="search-row">
-                        <input class="search-input" type="text" id="duckSearch" placeholder="Search with DuckDuckGo..."
-                            onkeydown="handleKey(event, 'duck')">
-                        <button class="btn btn-search" onclick="searchDuck()">
-                            Search
-                        </button>
-                        <button class="btn btn-clear" onclick="clearInput('duckSearch')">
-                            Clear
-                        </button>
-                    </div>
-                </div>
             </div>
 
             <!-- SHORTCUTS -->
