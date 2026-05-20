@@ -17,20 +17,20 @@
                 min-height: 100vh;
                 font-family: Arial, sans-serif;
                 color: white;
-                background-image: url('fundo.png');
-                background-size: cover;
-                background-position: center;
+                background:
+                    linear-gradient(
+                        180deg,
+                        #13315c 0%,
+                        #22548f 100%
+                    );
                 background-attachment: fixed;
                 display: flex;
                 justify-content: center;
-                padding: 30px 30px 30px 30px;
+                padding: 30px;
             }
 
             .overlay {
-                position: fixed;
-                inset: 0;
-                background: rgba(0, 0, 0, 0.38);
-                z-index: 1;
+                display: none;
             }
 
             .main-container {
@@ -44,12 +44,11 @@
             }
 
             .card {
-                background: rgba(20, 20, 20, 0.42);
-                backdrop-filter: blur(5px);
-                border: 1px solid rgba(255, 255, 255, 0.05);
+                background: rgba(14, 22, 34, 0.78);
+                border: 1px solid rgba(255, 255, 255, 0.11);
                 border-radius: 8px;
                 padding: 30px;
-                box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
             }
 
             .card-title {
@@ -94,6 +93,15 @@
                 cursor: pointer;
                 font-size: 14px;
                 opacity: 0.9;
+            }
+
+            .google-options input[type="radio"] {
+                margin: 0;
+                transform: translateY(0px);
+            }
+
+            .google-options input[type="checkbox"] {
+                margin: 0;
             }
 
             .search-row {
@@ -167,14 +175,14 @@
                 border-radius: 8px;
                 text-decoration: none;
                 color: white;
-                background: rgba(255, 255, 255, 0.075);
-                border: 1px solid rgba(255, 255, 255, 0.04);
+                background: rgba(255, 255, 255, 0.11);
+                border: 1px solid rgba(255, 255, 255, 0.08);
                 transition: background 0.2s, border-color 0.2s, transform 0.15s;
             }
 
             .shortcut:hover {
-                background: rgba(255, 255, 255, 0.11);
-                border-color: rgba(255, 255, 255, 0.08);
+                background: rgba(255, 255, 255, 0.145);
+                border-color: rgba(255, 255, 255, 0.11);
                 transform: translateY(-1px);
             }
 
@@ -279,7 +287,7 @@
                     </div>
                     <div class="search-row">
                         <input class="search-input" type="text" id="duckSearch" placeholder="Search with DuckDuckGo..."
-                            onkeydown="handleKey(event, 'duck')">
+                            onkeydown="handleKey(event, 'duck')" autofocus>
                         <button class="btn btn-search" onclick="searchDuck()">
                             Search
                         </button>
@@ -311,7 +319,7 @@
                     </div>
                     <div class="search-row">
                         <input class="search-input" type="text" id="googleSearch" placeholder="Search with Google..."
-                            onkeydown="handleKey(event, 'google')" autofocus>
+                            onkeydown="handleKey(event, 'google')">
                         <button class="btn btn-search" onclick="searchGoogle()">
                             Search
                         </button>
