@@ -1,474 +1,591 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
 
-        <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <style>
-            * {
-                box-sizing: border-box;
+    <title>Home</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background:
+				linear-gradient(
+					180deg,
+					#13315c 0%,
+					#22548f 100%
+				);
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(14, 22, 34, 0.78);
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+        }
+
+        .search-block {
+            margin-bottom: 35px;
+        }
+
+        .search-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .search-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .search-name {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .google-options {
+            display: flex;
+            gap: 18px;
+        }
+
+        .google-options label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .google-options input[type="radio"],
+        .google-options input[type="checkbox"] {
+            margin: 0;
+        }
+
+        .search-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 14px;
+            border: none;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.82);
+            color: black;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .search-input:focus {
+            box-shadow:
+                0 0 0 3px rgba(59, 130, 246, 0.55),
+                0 0 18px rgba(59, 130, 246, 0.35);
+        }
+
+        .btn {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-search {
+            background: rgba(82, 126, 212, 0.90);
+        }
+
+        .btn-search:hover {
+            background: rgba(98, 142, 228, 0.96);
+        }
+
+        .btn-clear {
+            background: rgba(192, 82, 96, 0.90);
+        }
+
+        .btn-clear:hover {
+            background: rgba(208, 96, 110, 0.96);
+        }
+
+        .shortcuts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .shortcut {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-height: 48px;
+            padding: 12px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.11);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: 0.2s;
+        }
+
+        .shortcut:hover {
+            background: rgba(255, 255, 255, 0.145);
+            transform: translateY(-1px);
+        }
+
+        .shortcut img {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            border-radius: 4px;
+        }
+
+        .shortcut span {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 900px) {
+
+            .shortcuts-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
+
+        }
+
+        @media (max-width: 700px) {
 
             body {
-                margin: 0;
-                min-height: 100vh;
-                font-family: Arial, sans-serif;
-                color: white;
-                background:
-                    linear-gradient(
-                        180deg,
-                        #13315c 0%,
-                        #22548f 100%
-                    );
-                background-attachment: fixed;
-                display: flex;
-                justify-content: center;
-                padding: 8px 30px;
-            }
-
-            .overlay {
-                display: none;
-            }
-
-            .main-container {
-                position: relative;
-                z-index: 2;
-                width: 100%;
-                max-width: 1100px;
-                display: flex;
-                flex-direction: column;
-                gap: 25px;
-                margin-top: -14px;
-                margin-bottom: -14px;
+                padding: 20px;
             }
 
             .card {
-                background: rgba(14, 22, 34, 0.78);
-                border: 1px solid rgba(255, 255, 255, 0.11);
-                border-radius: 8px;
-                padding: 30px;
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
-            }
-
-            .card-title {
-                text-align: center;
-                margin-top: 0;
-                margin-bottom: 35px;
-                font-size: 20px;
-                letter-spacing: 4px;
-                font-weight: 700;
-            }
-
-            .search-block {
-                margin-bottom: 35px;
-            }
-
-            .search-block:last-child {
-                margin-bottom: 0;
-            }
-
-            .search-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 14px;
-            }
-
-            .search-name {
-                font-size: 18px;
-                font-weight: 600;
-                letter-spacing: 0.2px;
-            }
-
-            .google-options {
-                display: flex;
-                gap: 18px;
-            }
-
-            .google-options label {
-                display: flex;
-                align-items: center;
-                gap: 4px;
-                cursor: pointer;
-                font-size: 14px;
-                opacity: 0.9;
-            }
-
-            .google-options input[type="radio"] {
-                margin: 0;
-                transform: translateY(0px);
-            }
-
-            .google-options input[type="checkbox"] {
-                margin: 0;
+                padding: 25px;
             }
 
             .search-row {
-                display: flex;
-                gap: 12px;
+                flex-wrap: wrap;
             }
 
             .search-input {
-                flex: 1;
-                padding: 12px 14px;
-                border: none;
-                border-radius: 6px;
-                background: rgba(255, 255, 255, 0.82);
-                color: black;
-                font-size: 15px;
-                outline: none;
-            }
-
-            .search-input:focus {
-                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.55), 0 0 18px rgba(59, 130, 246, 0.35);
+                width: 100%;
+                flex: unset;
             }
 
             .btn {
-                padding: 12px 18px;
-                border: none;
-                border-radius: 6px;
-                cursor: pointer;
-                color: white;
-                font-size: 14px;
-                font-weight: 600;
-                letter-spacing: 0.2px;
-                transition: background 0.2s, transform 0.15s;
-            }
-
-            .btn:hover {
-                transform: translateY(-1px);
-            }
-
-            .btn-search {
-                background: rgba(82, 126, 212, 0.90);
-                border: 1px solid rgba(180, 215, 255, 0.14);
-                box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
-            }
-
-            .btn-search:hover {
-                background: rgba(98, 142, 228, 0.96);
-            }
-
-            .btn-clear {
-                background: rgba(192, 82, 96, 0.90);
-                border: 1px solid rgba(255, 195, 205, 0.13);
-                box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
-            }
-
-            .btn-clear:hover {
-                background: rgba(208, 96, 110, 0.96);
+                flex: 1;
             }
 
             .shortcuts-grid {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 16px;
+                grid-template-columns: 1fr;
             }
 
-            .shortcut {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                min-height: 48px;
-                padding: 12px 14px;
-                border-radius: 8px;
-                text-decoration: none;
-                color: white;
-                background: rgba(255, 255, 255, 0.11);
-                border: 1px solid rgba(255, 255, 255, 0.08);
-                transition: background 0.2s, border-color 0.2s, transform 0.15s;
-            }
+        }
 
-            .shortcut:hover {
-                background: rgba(255, 255, 255, 0.145);
-                border-color: rgba(255, 255, 255, 0.11);
-                transform: translateY(-1px);
-            }
+    </style>
 
-            .shortcut img {
-                width: 24px;
-                height: 24px;
-                flex-shrink: 0;
-            }
+</head>
 
-            .shortcut span {
-                font-size: 15px;
-                font-weight: 500;
-                letter-spacing: 0.1px;
-            }
+<body>
 
-            .logo-container {
-                text-align: center;
-            }
+    <div class="main-container">
 
-            .logo {
-                width: 130px;
-                opacity: 1;
-                filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.25));
-                transition: transform 0.2s, filter 0.2s;
-            }
+        <!-- SEARCH -->
 
-            .logo:hover {
-                transform: scale(1.05);
-                filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.35));
-            }
+        <div class="card">
 
-            @media (max-width: 900px) {
+            <!-- SEARCH INPUT -->
 
-                .shortcuts-grid {
-                    grid-template-columns: repeat(2, 1fr);
-                }
+            <div class="search-block">
 
-            }
+                <div class="search-header">
 
-            @media (max-width: 700px) {
+                    <div class="search-name">Pesquisa</div>
 
-                body {
-                    padding: 40px 20px 40px 20px;
-                }
+                    <div class="google-options">
 
-                .card {
-                    padding: 25px;
-                }
+                        <label>
+                            <input type="radio" name="googleMode" value="br" checked>
+                            BR
+                        </label>
 
-                .search-header {
-                    align-items: center;
-                    gap: 10px;
-                }
+                        <label>
+                            <input type="radio" name="googleMode" value="ncr">
+                            NCR
+                        </label>
 
-                .search-row {
-                    flex-wrap: wrap;
-                }
+                        <label>
+                            <input type="checkbox" id="searchImages">
+                            IMAGENS
+                        </label>
 
-                .search-input {
-                    width: 100%;
-                    flex: unset;
-                }
-
-                .btn {
-                    flex: 1;
-                }
-
-                .shortcuts-grid {
-                    grid-template-columns: 1fr;
-                }
-
-                .logo {
-                    width: 100px;
-                }
-
-            }
-        </style>
-
-    </head>
-
-    <body>
-
-        <div class="overlay"></div>
-
-        <div class="main-container">
-
-            <!-- SEARCH -->
-
-            <div class="card">
-
-                <!-- DUCK -->
-
-                <div class="search-block">
-                    <div class="search-header">
-                        <div class="search-name">DuckDuckGo</div>
-                        <div class="google-options">
-                            <label>
-                                <input type="checkbox" id="duckImages">
-                                IMAGES
-                            </label>
-                        </div>
                     </div>
-                    <div class="search-row">
-                        <input class="search-input" type="text" id="duckSearch" placeholder="Search with DuckDuckGo..."
-                            onkeydown="handleKey(event, 'duck')" autofocus>
-                        <button class="btn btn-search" onclick="searchDuck()">
-                            Search
-                        </button>
-                        <button class="btn btn-clear" onclick="clearInput('duckSearch')">
-                            Clear
-                        </button>
-                    </div>
+
                 </div>
 
-                <!-- GOOGLE -->
+                <div class="search-row">
 
-                <div class="search-block">
-                    <div class="search-header">
-                        <div class="search-name">Google</div>
-                        <div class="google-options">
-                            <label>
-                                <input type="radio" name="googleMode" value="br" checked>
-                                BR
-                            </label>
-                            <label>
-                                <input type="radio" name="googleMode" value="ncr">
-                                NCR
-                            </label>
-                            <label>
-                                <input type="checkbox" id="googleImages">
-                                IMAGES
-                            </label>
-                        </div>
-                    </div>
-                    <div class="search-row">
-                        <input class="search-input" type="text" id="googleSearch" placeholder="Search with Google..."
-                            onkeydown="handleKey(event, 'google')">
-                        <button class="btn btn-search" onclick="searchGoogle()">
-                            Search
-                        </button>
-                        <button class="btn btn-clear" onclick="clearInput('googleSearch')">
-                            Clear
-                        </button>
-                    </div>
+                    <input
+                        class="search-input"
+                        type="text"
+                        id="searchInput"
+                        placeholder="Digite aqui o que deseja pesquisar."
+                        onkeydown="handleKey(event)"
+                        autofocus
+                    >
+
+                    <button class="btn btn-search" onclick="searchDuck()">
+                        DuckDuckGo
+                    </button>
+
+                    <button class="btn btn-search" onclick="searchGoogle()">
+                        Google
+                    </button>
+
+                    <button class="btn btn-clear" onclick="clearInput()">
+                        Limpar
+                    </button>
+
                 </div>
 
             </div>
 
-            <!-- SHORTCUTS -->
+        <!-- SHORTCUTS -->
 
-            <div class="card">
-                <div class="shortcuts-grid">
-                    <a class="shortcut" href="https://www.instagram.com/">
-                        <img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=64">
-                        <span>Instagram</span>
-                    </a>
-                    <a class="shortcut" href="https://www.inoreader.com/all_articles">
-                        <img src="https://www.google.com/s2/favicons?domain=inoreader.com&sz=64">
-                        <span>Inoreader</span>
-                    </a>
-                    <a class="shortcut" href="https://youtube.com">
-                        <img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=64">
-                        <span>YouTube</span>
-                    </a>
-                    <a class="shortcut" href="https://translate.google.com/?sl=auto&tl=pt&op=translate">
-                        <img src="https://www.google.com/s2/favicons?domain=translate.google.com&sz=64">
-                        <span>Google Translate</span>
-                    </a>
-                    <a class="shortcut" href="https://chatgpt.com/">
-                        <img src="https://www.google.com/s2/favicons?domain=chatgpt.com&sz=64">
-                        <span>ChatGPT</span>
-                    </a>
-                    <a class="shortcut" href="https://www.perplexity.ai/">
-                        <img src="https://www.google.com/s2/favicons?domain=perplexity.com&sz=64">
-                        <span>Perplexity</span>
-                    </a>
-                    <a class="shortcut" href="https://www.justwatch.com/br">
-                        <img src="https://www.google.com/s2/favicons?domain=justwatch.com&sz=64">
-                        <span>JustWatch</span>
-                    </a>
-                    <a class="shortcut" href="https://github.com">
-                        <img src="https://www.google.com/s2/favicons?domain=github.com&sz=64">
-                        <span>GitHub</span>
-                    </a>
-                </div>
-            </div>
+        <div class="card">
+
+            <div class="shortcuts-grid" id="shortcutsGrid"></div>
+
         </div>
 
-        <script>
+    </div>
 
-            function getGoogleMode() {
+    <script>
 
-                return document.querySelector('input[name="googleMode"]:checked').value;
+        // =========================================
+        // SHORTCUTS
+        // =========================================
+
+        const shortcuts = [
+
+            {
+                name: 'Instagram',
+                url: 'https://www.instagram.com/',
+                icon: ''
+            },
+
+            {
+                name: 'Inoreader',
+                url: 'https://www.inoreader.com/all_articles',
+                icon: ''
+            },
+
+            {
+                name: 'YouTube',
+                url: 'https://youtube.com',
+                icon: ''
+            },
+
+            {
+                name: 'Google Translate',
+                url: 'https://translate.google.com/?sl=auto&tl=pt&op=translate',
+                icon: ''
+            },
+
+            {
+                name: 'ChatGPT',
+                url: 'https://chatgpt.com/',
+                icon: ''
+            },
+
+            {
+                name: 'Perplexity',
+                url: 'https://www.perplexity.ai/',
+                icon: ''
+            },
+
+            {
+                name: 'JustWatch',
+                url: 'https://www.justwatch.com/br',
+                icon: ''
+            },
+
+            {
+                name: 'GitHub',
+                url: 'https://github.com/',
+                icon: ''
+            }
+
+        ];
+
+        function getDomain(url) {
+
+            return new URL(url).hostname;
+
+        }
+
+        function getOrigin(url) {
+
+            return new URL(url).origin;
+
+        }
+
+        function getIconBase(shortcut) {
+
+            if (shortcut.icon && shortcut.icon.trim() !== '') {
+
+                return shortcut.icon;
 
             }
 
-            function searchGoogle() {
+            return shortcut.url;
 
-                const query = document.getElementById('googleSearch').value.trim();
+        }
 
-                if (!query)
-                    return;
+        function getFaviconSources(shortcut) {
 
-                const mode = getGoogleMode();
+            const base = getIconBase(shortcut);
 
-                const images = document.getElementById('googleImages').checked;
+            const domain = getDomain(base);
 
-                let url;
+            const origin = getOrigin(base);
 
-                if (mode === 'br') {
-                    if (images) {
-                        url = `https://www.google.com.br/search?tbm=isch&q=${encodeURIComponent(query)}`;
-                    }
-                    else {
-                        url = `https://www.google.com.br/search?udm=14&q=${encodeURIComponent(query)}`;
-                    }
+            return [
+
+                // DuckDuckGo
+                `https://icons.duckduckgo.com/ip3/${domain}.ico`,
+
+                // Google
+                `https://www.google.com/s2/favicons?domain=${domain}&sz=64`,
+
+                // favicon.ico tradicional
+                `${origin}/favicon.ico`
+
+            ];
+
+        }
+
+        function createShortcut(shortcutData) {
+
+            const a = document.createElement('a');
+
+            a.className = 'shortcut';
+            a.href = shortcutData.url;
+
+            const img = document.createElement('img');
+
+            const faviconSources = getFaviconSources(shortcutData);
+
+            let current = 0;
+
+            img.src = faviconSources[current];
+
+            img.onerror = () => {
+
+                current++;
+
+                if (current < faviconSources.length) {
+
+                    img.src = faviconSources[current];
+
                 }
-                else {
-                    if (images) {
-                        url = `https://www.google.com/search?pws=0&gl=001&tbm=isch&q=${encodeURIComponent(query)}`;
-                    }
-                    else {
-                        url = `https://www.google.com/search?pws=0&gl=001&udm=14&q=${encodeURIComponent(query)}`;
-                    }
-                }
 
-                window.location.href = url;
+            };
 
-            }
+            const span = document.createElement('span');
 
+            span.textContent = shortcutData.name;
 
-            function searchDuck() {
+            a.appendChild(img);
+            a.appendChild(span);
 
-                const query = document.getElementById('duckSearch').value.trim();
+            return a;
 
-                if (!query)
-                    return;
+        }
 
-                const images = document.getElementById('duckImages').checked;
+        function renderShortcuts() {
 
-                let url;
+            const grid = document.getElementById('shortcutsGrid');
+
+            shortcuts.forEach(shortcut => {
+
+                grid.appendChild(
+                    createShortcut(shortcut)
+                );
+
+            });
+
+        }
+
+        renderShortcuts();
+
+        // =========================================
+        // GOOGLE
+        // =========================================
+
+        function getGoogleMode() {
+
+            return document.querySelector(
+                'input[name="googleMode"]:checked'
+            ).value;
+
+        }
+
+        function searchGoogle() {
+
+            const query = document
+                .getElementById('searchInput')
+                .value
+                .trim();
+
+            if (!query)
+                return;
+
+            const mode = getGoogleMode();
+
+            const images = document
+                .getElementById('searchImages')
+                .checked;
+
+            let url;
+
+            if (mode === 'br') {
 
                 if (images) {
-                    url = `https://duckduckgo.com/?q=${encodeURIComponent(query)}&iax=images&ia=images`;
+
+                    url =
+                        `https://www.google.com.br/search?tbm=isch&q=${encodeURIComponent(query)}`;
+
                 }
                 else {
-                    url = `https://duckduckgo.com/?q=${encodeURIComponent(query)}`;
+
+                    url =
+                        `https://www.google.com.br/search?udm=14&q=${encodeURIComponent(query)}`;
+
                 }
 
-                window.location.href = url;
-
             }
+            else {
 
+                if (images) {
 
-            function clearInput(id) {
+                    url =
+                        `https://www.google.com/search?pws=0&gl=001&tbm=isch&q=${encodeURIComponent(query)}`;
 
-                document.getElementById(id).value = '';
-
-            }
-
-            function handleKey(event, mode) {
-
-                if (event.key === 'Enter') {
-                    if (mode === 'google') {
-                        searchGoogle();
-                    }
-                    else {
-                        searchDuck();
-                    }
                 }
+                else {
 
-                if (event.key === 'Escape') {
-                    if (mode === 'google') {
-                        clearInput('googleSearch');
-                    }
-                    else {
-                        clearInput('duckSearch');
-                    }
+                    url =
+                        `https://www.google.com/search?pws=0&gl=001&udm=14&q=${encodeURIComponent(query)}`;
+
                 }
 
             }
 
-        </script>
+            window.location.href = url;
 
-    </body>
+        }
+
+        // =========================================
+        // DUCK
+        // =========================================
+
+        function searchDuck() {
+
+            const query = document
+                .getElementById('searchInput')
+                .value
+                .trim();
+
+            if (!query)
+                return;
+
+            const images = document
+                .getElementById('searchImages')
+                .checked;
+
+            let url;
+
+            if (images) {
+
+                url =
+                    `https://duckduckgo.com/?q=${encodeURIComponent(query)}&iax=images&ia=images`;
+
+            }
+            else {
+
+                url =
+                    `https://duckduckgo.com/?q=${encodeURIComponent(query)}`;
+
+            }
+
+            window.location.href = url;
+
+        }
+
+        // =========================================
+        // HELPERS
+        // =========================================
+
+        function clearInput() {
+
+            const input = document.getElementById('searchInput');
+
+            input.value = '';
+
+            input.focus();
+
+        }
+
+        function handleKey(event) {
+
+            if (event.key === 'Enter') {
+
+                searchDuck();
+
+            }
+
+            if (event.key === 'Escape') {
+
+                clearInput();
+
+            }
+
+        }
+
+    </script>
+
+</body>
 
 </html>
