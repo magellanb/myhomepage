@@ -18,73 +18,52 @@
             margin: 0;
             min-height: 100vh;
             font-family: Arial, sans-serif;
+
             background:
-				linear-gradient(
-					180deg,
-					#13315c 0%,
-					#22548f 100%
-				);
+                linear-gradient(
+                    180deg,
+                    #13315c 0%,
+                    #22548f 100%
+                );
+
             background-size: cover;
             background-position: center;
+
             color: white;
+
             display: flex;
             justify-content: center;
+
             padding: 30px;
         }
 
         .main-container {
             width: 100%;
             max-width: 1100px;
+
             display: flex;
             flex-direction: column;
+
             gap: 25px;
         }
 
         .card {
             background: rgba(14, 22, 34, 0.78);
+
             border: 1px solid rgba(255, 255, 255, 0.11);
+
             border-radius: 8px;
+
             padding: 30px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+
+            box-shadow:
+                0 8px 24px rgba(0, 0, 0, 0.16);
         }
 
-        .search-block {
-            margin-bottom: 35px;
-        }
 
-        .search-block:last-child {
-            margin-bottom: 0;
-        }
-
-        .search-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 14px;
-        }
-
-        .search-name {
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .google-options {
-            display: flex;
-            gap: 18px;
-        }
-
-        .google-options label {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .google-options input[type="radio"],
-        .google-options input[type="checkbox"] {
-            margin: 0;
-        }
+        /* =========================================
+           SEARCH
+        ========================================= */
 
         .search-row {
             display: flex;
@@ -93,12 +72,18 @@
 
         .search-input {
             flex: 1;
+
             padding: 12px 14px;
+
             border: none;
             border-radius: 6px;
+
             background: rgba(255, 255, 255, 0.82);
+
             color: black;
+
             font-size: 15px;
+
             outline: none;
         }
 
@@ -110,25 +95,22 @@
 
         .btn {
             padding: 12px 18px;
+
             border: none;
             border-radius: 6px;
+
             cursor: pointer;
+
             color: white;
+
             font-size: 14px;
             font-weight: 600;
+
             transition: 0.2s;
         }
 
         .btn:hover {
             transform: translateY(-1px);
-        }
-
-        .btn-search {
-            background: rgba(82, 126, 212, 0.90);
-        }
-
-        .btn-search:hover {
-            background: rgba(98, 142, 228, 0.96);
         }
 
         .btn-clear {
@@ -139,50 +121,169 @@
             background: rgba(208, 96, 110, 0.96);
         }
 
+
+        /* =========================================
+           SHORTCUTS GRID
+        ========================================= */
+
         .shortcuts-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 22px;
         }
+
+
+        /* =========================================
+           SHORTCUT GROUP
+        ========================================= */
+
+        .shortcut-group {
+            display: flex;
+
+            gap: 5px;
+
+            min-width: 0;
+        }
+
+
+        /* =========================================
+           MAIN SHORTCUT BUTTON
+        ========================================= */
 
         .shortcut {
             display: flex;
             align-items: center;
+
             gap: 12px;
+
             min-height: 48px;
+
             padding: 12px 14px;
-            border-radius: 8px;
+
+            border-radius: 8px 0 0 8px;
+
             text-decoration: none;
+
             color: white;
+
             background: rgba(255, 255, 255, 0.11);
+
             border: 1px solid rgba(255, 255, 255, 0.08);
+
             transition: 0.2s;
+
+            flex: 1;
+
+            min-width: 0;
         }
 
         .shortcut:hover {
             background: rgba(255, 255, 255, 0.145);
+
             transform: translateY(-1px);
         }
 
         .shortcut img {
             width: 24px;
             height: 24px;
+
             flex-shrink: 0;
+
             border-radius: 4px;
         }
 
         .shortcut span {
             font-size: 15px;
             font-weight: 500;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
         }
 
-        @media (max-width: 900px) {
+
+        /* =========================================
+           SINGLE SHORTCUT
+           (WITHOUT SEARCH)
+        ========================================= */
+
+        .shortcut-single {
+            border-radius: 8px;
+        }
+
+
+        /* =========================================
+           SEARCH BUTTON
+        ========================================= */
+
+        .shortcut-search {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 48px;
+            min-width: 48px;
+
+            min-height: 48px;
+
+            padding: 0;
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius: 0 8px 8px 0;
+
+            color: white;
+
+            background: rgba(255, 255, 255, 0.11);
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .shortcut-search:hover {
+            background: rgba(255, 255, 255, 0.145);
+
+            transform: translateY(-1px);
+        }
+
+
+        /* =========================================
+           SEARCH SYMBOL
+        ========================================= */
+
+        .shortcut-search span {
+            font-family: Arial, sans-serif;
+
+            font-size: 30px;
+
+            line-height: 1;
+
+            display: block;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 1000px) {
 
             .shortcuts-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
 
         }
+
 
         @media (max-width: 700px) {
 
@@ -200,10 +301,11 @@
 
             .search-input {
                 width: 100%;
+
                 flex: unset;
             }
 
-            .btn {
+            .btn-clear {
                 flex: 1;
             }
 
@@ -217,81 +319,60 @@
 
 </head>
 
+
 <body>
 
     <div class="main-container">
 
-        <!-- SEARCH -->
+
+        <!-- =========================================
+             SEARCH
+        ========================================= -->
 
         <div class="card">
 
-            <!-- SEARCH INPUT -->
+            <div class="search-row">
 
-            <div class="search-block">
+                <input
+                    class="search-input"
+                    type="text"
+                    id="searchInput"
+                    placeholder="Type here what you want to search."
+                    onkeydown="handleKey(event)"
+                    autofocus
+                >
 
-                <div class="search-header">
-
-                    <div class="search-name">Search</div>
-
-                    <div class="google-options">
-
-                        <label>
-                            <input type="radio" name="googleMode" value="br" checked>
-                            BR
-                        </label>
-
-                        <label>
-                            <input type="radio" name="googleMode" value="ncr">
-                            NCR
-                        </label>
-
-                        <label>
-                            <input type="checkbox" id="searchImages">
-                            IMAGES
-                        </label>
-
-                    </div>
-
-                </div>
-
-                <div class="search-row">
-
-                    <input
-                        class="search-input"
-                        type="text"
-                        id="searchInput"
-                        placeholder="Type here what you want to search."
-                        onkeydown="handleKey(event)"
-                        autofocus
-                    >
-
-                    <button class="btn btn-search" onclick="searchDuck()">
-                        DuckDuckGo
-                    </button>
-
-                    <button class="btn btn-search" onclick="searchGoogle()">
-                        Google
-                    </button>
-
-                    <button class="btn btn-clear" onclick="clearInput()">
-                        Clear
-                    </button>
-
-                </div>
+                <button
+                    class="btn btn-clear"
+                    onclick="clearInput()"
+                >
+                    Clear
+                </button>
 
             </div>
 
-        <!-- SHORTCUTS -->
+        </div>
+
+
+        <!-- =========================================
+             SHORTCUTS
+        ========================================= -->
 
         <div class="card">
 
-            <div class="shortcuts-grid" id="shortcutsGrid"></div>
+            <div
+                class="shortcuts-grid"
+                id="shortcutsGrid"
+            ></div>
 
         </div>
 
+
     </div>
 
+
     <script>
+
 
         // =========================================
         // SHORTCUTS
@@ -299,55 +380,122 @@
 
         const shortcuts = [
 
+
+            // -----------------------------------------
+            // DUCKDUCKGO
+            // -----------------------------------------
+
+            {
+                name: 'DuckDuckGo',
+                url: 'https://duckduckgo.com/',
+                search: 'duck'
+            },
+
+            {
+                name: 'DDG Img',
+                url: 'https://duckduckgo.com/',
+                search: 'duckImages'
+            },
+
+
+            // -----------------------------------------
+            // GOOGLE
+            // -----------------------------------------
+
+            {
+                name: 'Google BR',
+                url: 'https://www.google.com.br/',
+                search: 'googleBR'
+            },
+
+            {
+                name: 'Google BR Img',
+                url: 'https://www.google.com.br/',
+                search: 'googleImagesBR'
+            },
+
+            {
+                name: 'Google',
+                url: 'https://www.google.com/',
+                search: 'googleNCR'
+            },
+
+            {
+                name: 'Google Img',
+                url: 'https://www.google.com/',
+                search: 'googleImagesNCR'
+            },
+
+
+            // -----------------------------------------
+            // OTHER SITES
+            // -----------------------------------------
+
             {
                 name: 'Instagram',
                 url: 'https://www.instagram.com/',
-                icon: ''
+                search: 'instagram'
             },
 
             {
                 name: 'Inoreader',
                 url: 'https://www.inoreader.com/all_articles',
-                icon: ''
+                search: null
             },
 
             {
                 name: 'YouTube',
                 url: 'https://youtube.com',
-                icon: ''
+                search: 'youtube'
             },
 
             {
                 name: 'Google Translate',
                 url: 'https://translate.google.com/?sl=auto&tl=pt&op=translate',
-                icon: ''
+                search: 'translate'
             },
 
             {
                 name: 'ChatGPT',
                 url: 'https://chatgpt.com/',
-                icon: ''
+                search: 'chatgpt'
             },
 
             {
                 name: 'Perplexity',
                 url: 'https://www.perplexity.ai/',
-                icon: ''
+                search: 'perplexity'
             },
 
             {
                 name: 'JustWatch',
                 url: 'https://www.justwatch.com/br',
-                icon: ''
+                search: 'justwatch'
             },
 
             {
                 name: 'GitHub',
                 url: 'https://github.com/',
-                icon: ''
+                search: 'github'
+            },
+
+
+            // -----------------------------------------
+            // EXAMPLE WITHOUT SEARCH
+            // -----------------------------------------
+
+            {
+                name: 'Netflix',
+                url: 'https://www.netflix.com/',
+                search: null
             }
 
         ];
+
+
+        // =========================================
+        // FAVICONS
+        // =========================================
 
         function getDomain(url) {
 
@@ -355,31 +503,21 @@
 
         }
 
+
         function getOrigin(url) {
 
             return new URL(url).origin;
 
         }
 
-        function getIconBase(shortcut) {
-
-            if (shortcut.icon && shortcut.icon.trim() !== '') {
-
-                return shortcut.icon;
-
-            }
-
-            return shortcut.url;
-
-        }
 
         function getFaviconSources(shortcut) {
 
-            const base = getIconBase(shortcut);
+            const domain =
+                getDomain(shortcut.url);
 
-            const domain = getDomain(base);
-
-            const origin = getOrigin(base);
+            const origin =
+                getOrigin(shortcut.url);
 
             return [
 
@@ -396,47 +534,198 @@
 
         }
 
+
+        // =========================================
+        // CREATE SHORTCUT
+        // =========================================
+
         function createShortcut(shortcutData) {
 
-            const a = document.createElement('a');
+            /*
+             * Quando search for null:
+             *
+             *     [ Netflix                 ]
+             *
+             * Quando existir search:
+             *
+             *     [ Google              ] [ ⌕ ]
+             */
 
-            a.className = 'shortcut';
-            a.href = shortcutData.url;
 
-            const img = document.createElement('img');
+            // -----------------------------------------
+            // SHORTCUT WITHOUT SEARCH
+            // -----------------------------------------
 
-            const faviconSources = getFaviconSources(shortcutData);
+            if (!shortcutData.search) {
+
+                const a =
+                    document.createElement('a');
+
+                a.className =
+                    'shortcut shortcut-single';
+
+                a.href =
+                    shortcutData.url;
+
+
+                addShortcutContent(
+                    a,
+                    shortcutData
+                );
+
+
+                return a;
+
+            }
+
+
+            // -----------------------------------------
+            // SHORTCUT WITH SEARCH
+            // -----------------------------------------
+
+            const group =
+                document.createElement('div');
+
+            group.className =
+                'shortcut-group';
+
+
+            // -----------------------------------------
+            // SITE BUTTON
+            // -----------------------------------------
+
+            const a =
+                document.createElement('a');
+
+            a.className =
+                'shortcut';
+
+            a.href =
+                shortcutData.url;
+
+
+            addShortcutContent(
+                a,
+                shortcutData
+            );
+
+
+            // -----------------------------------------
+            // SEARCH BUTTON
+            // -----------------------------------------
+
+            const searchButton =
+                document.createElement('button');
+
+            searchButton.className =
+                'shortcut-search';
+
+            searchButton.type =
+                'button';
+
+            searchButton.title =
+                `Pesquisar no ${shortcutData.name}`;
+
+
+            const searchIcon =
+                document.createElement('span');
+
+            searchIcon.textContent =
+                '⌕';
+
+
+            searchButton.appendChild(
+                searchIcon
+            );
+
+
+            searchButton.onclick = () => {
+
+                searchShortcut(
+                    shortcutData.search
+                );
+
+            };
+
+
+            group.appendChild(a);
+
+            group.appendChild(
+                searchButton
+            );
+
+
+            return group;
+
+        }
+
+
+        // =========================================
+        // ADD SHORTCUT CONTENT
+        // =========================================
+
+        function addShortcutContent(
+            element,
+            shortcutData
+        ) {
+
+            const img =
+                document.createElement('img');
+
+
+            const faviconSources =
+                getFaviconSources(shortcutData);
+
 
             let current = 0;
 
-            img.src = faviconSources[current];
+
+            img.src =
+                faviconSources[current];
+
 
             img.onerror = () => {
 
                 current++;
 
-                if (current < faviconSources.length) {
+                if (
+                    current <
+                    faviconSources.length
+                ) {
 
-                    img.src = faviconSources[current];
+                    img.src =
+                        faviconSources[current];
 
                 }
 
             };
 
-            const span = document.createElement('span');
 
-            span.textContent = shortcutData.name;
+            const span =
+                document.createElement('span');
 
-            a.appendChild(img);
-            a.appendChild(span);
+            span.textContent =
+                shortcutData.name;
 
-            return a;
+
+            element.appendChild(img);
+
+            element.appendChild(span);
 
         }
 
+
+        // =========================================
+        // RENDER SHORTCUTS
+        // =========================================
+
         function renderShortcuts() {
 
-            const grid = document.getElementById('shortcutsGrid');
+            const grid =
+                document.getElementById(
+                    'shortcutsGrid'
+                );
+
 
             shortcuts.forEach(shortcut => {
 
@@ -448,119 +737,218 @@
 
         }
 
+
         renderShortcuts();
 
+
         // =========================================
-        // GOOGLE
+        // GET SEARCH QUERY
         // =========================================
 
-        function getGoogleMode() {
+        function getSearchQuery() {
 
-            return document.querySelector(
-                'input[name="googleMode"]:checked'
-            ).value;
-
-        }
-
-        function searchGoogle() {
-
-            const query = document
+            return document
                 .getElementById('searchInput')
                 .value
                 .trim();
 
-            if (!query)
-                return;
-
-            const mode = getGoogleMode();
-
-            const images = document
-                .getElementById('searchImages')
-                .checked;
-
-            let url;
-
-            if (mode === 'br') {
-
-                if (images) {
-
-                    url =
-                        `https://www.google.com.br/search?tbm=isch&q=${encodeURIComponent(query)}`;
-
-                }
-                else {
-
-                    url =
-                        `https://www.google.com.br/search?udm=14&q=${encodeURIComponent(query)}`;
-
-                }
-
-            }
-            else {
-
-                if (images) {
-
-                    url =
-                        `https://www.google.com/search?pws=0&gl=001&tbm=isch&q=${encodeURIComponent(query)}`;
-
-                }
-                else {
-
-                    url =
-                        `https://www.google.com/search?pws=0&gl=001&udm=14&q=${encodeURIComponent(query)}`;
-
-                }
-
-            }
-
-            window.location.href = url;
-
         }
 
+
         // =========================================
-        // DUCK
+        // SEARCH SHORTCUT
         // =========================================
 
-        function searchDuck() {
+        function searchShortcut(type) {
 
-            const query = document
-                .getElementById('searchInput')
-                .value
-                .trim();
+            const query =
+                getSearchQuery();
+
 
             if (!query)
                 return;
 
-            const images = document
-                .getElementById('searchImages')
-                .checked;
 
             let url;
 
-            if (images) {
 
-                url =
-                    `https://duckduckgo.com/?q=${encodeURIComponent(query)}&iax=images&ia=images`;
+            // -----------------------------------------
+            // DUCKDUCKGO
+            // -----------------------------------------
 
-            }
-            else {
+            if (type === 'duck') {
 
                 url =
                     `https://duckduckgo.com/?q=${encodeURIComponent(query)}`;
 
             }
 
-            window.location.href = url;
+
+            else if (type === 'duckImages') {
+
+                url =
+                    `https://duckduckgo.com/?q=${encodeURIComponent(query)}&iax=images&ia=images`;
+
+            }
+
+
+            // -----------------------------------------
+            // GOOGLE BR
+            // -----------------------------------------
+
+            else if (type === 'googleBR') {
+
+                url =
+                    `https://www.google.com.br/search?udm=14&q=${encodeURIComponent(query)}`;
+
+            }
+
+
+            else if (type === 'googleImagesBR') {
+
+                url =
+                    `https://www.google.com.br/search?tbm=isch&q=${encodeURIComponent(query)}`;
+
+            }
+
+
+            // -----------------------------------------
+            // GOOGLE NCR
+            // -----------------------------------------
+
+            else if (type === 'googleNCR') {
+
+                url =
+                    `https://www.google.com/search?pws=0&gl=001&udm=14&q=${encodeURIComponent(query)}`;
+
+            }
+
+
+            else if (type === 'googleImagesNCR') {
+
+                url =
+                    `https://www.google.com/search?pws=0&gl=001&tbm=isch&q=${encodeURIComponent(query)}`;
+
+            }
+
+
+            // -----------------------------------------
+            // INSTAGRAM
+            // -----------------------------------------
+
+            else if (type === 'instagram') {
+
+                url =
+                    `https://www.google.com/search?q=site%3Ainstagram.com+${encodeURIComponent(query)}`;
+
+            }
+
+
+            // -----------------------------------------
+            // INOREADER
+            // -----------------------------------------
+
+            else if (type === 'inoreader') {
+
+                url =
+                    `https://www.google.com/search?q=site%3Ainoreader.com+${encodeURIComponent(query)}`;
+
+            }
+
+
+            // -----------------------------------------
+            // YOUTUBE
+            // -----------------------------------------
+
+            else if (type === 'youtube') {
+
+                url =
+                    `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
+
+            }
+
+
+            // -----------------------------------------
+            // GOOGLE TRANSLATE
+            // -----------------------------------------
+
+            else if (type === 'translate') {
+
+                url =
+                    `https://translate.google.com/?sl=auto&tl=pt&text=${encodeURIComponent(query)}&op=translate`;
+
+            }
+
+
+            // -----------------------------------------
+            // CHATGPT
+            // -----------------------------------------
+
+            else if (type === 'chatgpt') {
+
+                url =
+                    `https://chatgpt.com/?q=${encodeURIComponent(query)}`;
+
+            }
+
+
+            // -----------------------------------------
+            // PERPLEXITY
+            // -----------------------------------------
+
+            else if (type === 'perplexity') {
+
+                url =
+                    `https://www.perplexity.ai/search?q=${encodeURIComponent(query)}`;
+
+            }
+
+
+            // -----------------------------------------
+            // JUSTWATCH
+            // -----------------------------------------
+
+            else if (type === 'justwatch') {
+
+                url =
+                    `https://br.justwatch.com/br/busca?q=${encodeURIComponent(query)}`;
+
+            }
+
+
+            // -----------------------------------------
+            // GITHUB
+            // -----------------------------------------
+
+            else if (type === 'github') {
+
+                url =
+                    `https://github.com/search?q=${encodeURIComponent(query)}&type=repositories`;
+
+            }
+
+
+            if (url) {
+
+                window.location.href =
+                    url;
+
+            }
 
         }
 
+
         // =========================================
-        // HELPERS
+        // CLEAR
         // =========================================
 
         function clearInput() {
 
-            const input = document.getElementById('searchInput');
+            const input =
+                document.getElementById(
+                    'searchInput'
+                );
+
 
             input.value = '';
 
@@ -568,13 +956,19 @@
 
         }
 
+
+        // =========================================
+        // KEYBOARD
+        // =========================================
+
         function handleKey(event) {
 
             if (event.key === 'Enter') {
 
-                searchDuck();
+                searchShortcut('duck');
 
             }
+
 
             if (event.key === 'Escape') {
 
